@@ -1,0 +1,10 @@
+arg = commandArgs(trailingOnly=TRUE)
+
+library(Seurat)
+library(MuDataSeurat)
+
+mtx <- readRDS(arg)
+
+o = paste(strsplit(arg, split='.', fixed=TRUE)[[1]][1], 'h5ad', sep='.')
+
+MuDataSeurat::WriteH5AD(mtx, o, assay='RNA')
